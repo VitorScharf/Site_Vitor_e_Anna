@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Músicas</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#ffe6f0, #ffffff);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #ffb6c1;
+      padding: 2rem;
+      border-bottom: 3px solid #ff8fa3;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #d6336c;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+    }
+    footer {
+      background-color: #ffd5dc;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    button {
+      background-color: #ff8fa3;
+      border: none;
+      padding: 0.5rem 1rem;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trilha Sonora 🎶</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="historia.html">História</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="planos.html">Planos</a>
+    </nav>
+  </header>
+  <section>
+    <p>Somebody Like You — Giant Rooks</p>
+    <audio id="bg-music" autoplay loop>
+      <source src="https://dl.dropboxusercontent.com/scl/fi/kxvrka6lxdhjssjw4c01z/giant-rooks-somebody-like-you.mp3?rlkey=fz2vt3zrfjbqwqdu9e4znb8sy&dl=0" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
+    <button onclick="toggleMute()">🔇 Mute / Unmute</button>
+  </section>
+  <footer>
+    <p>Feito com amor por Vitor</p>
+  </footer>
+
+  <script>
+    const audio = document.getElementById('bg-music');
+    function toggleMute() {
+      audio.muted = !audio.muted;
+    }
+  </script>
+</body>
+</html>
