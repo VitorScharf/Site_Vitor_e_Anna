@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Galeria</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#ffe6f0, #ffffff);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #ffb6c1;
+      padding: 2rem;
+      border-bottom: 3px solid #ff8fa3;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #d6336c;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+    }
+    .carousel-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .carousel-item {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      max-width: 50%;
+    }
+    .carousel-item.active {
+      display: flex;
+    }
+    .carousel-item img {
+      width: 100%;
+      max-height: 500px; /* ou outro valor limite que preferir */
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .caption {
+      margin-top: 0.5rem;
+      font-style: italic;
+      color: #555;
+    }
+    .controls {
+      margin-top: 1.5rem;
+    }
+    button {
+      background-color: #ff8fa3;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+    footer {
+      background-color: #ffd5dc;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Galeria de Momentos</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="historia.html">História</a>
+      <a href="planos.html">Planos</a>
+      <a href="musica.html">Músicas</a>
+    </nav>
+  </header>
+
+  <section>
+    <p>Veja nossos momentos especiais 💕</p>
+    <div class="carousel-wrapper" id="carousel">
+      <div class="carousel-item active">
+        <img src="Site_em_desenvolvimento.png" alt="Foto 1">
+        <div class="caption">Primeiro momento especial</div>
+      </div>
+      <div class="carousel-item">
+        <img src="nosso_primeiro_carnaval.jpg" alt="Foto 2">
+        <div class="caption">Nosso primeiro carnaval juntos</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button onclick="mudarImagem(-1)">⬅️ Anterior</button>
+      <button onclick="mudarImagem(1)">Próxima ➡️</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>Feito com amor por Vitor</p>
+  </footer>
+
+  <script>
+    let indiceAtual = 0;
+    const itens = document.querySelectorAll('.carousel-item');
+
+    function mostrarItem(indice) {
+      itens.forEach((el, i) => {
+        el.classList.remove('active');
+        if (i === indice) el.classList.add('active');
+      });
+    }
+
+    function mudarImagem(direcao) {
+      indiceAtual += direcao;
+      if (indiceAtual < 0) indiceAtual = itens.length - 1;
+      if (indiceAtual >= itens.length) indiceAtual = 0;
+      mostrarItem(indiceAtual);
+    }
+  </script>
+</body>
+</html>

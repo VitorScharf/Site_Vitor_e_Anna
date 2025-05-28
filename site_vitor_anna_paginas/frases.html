@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Frases 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fff6f0, #ffffff);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100vh;
+    }
+    header {
+      background-color: #ffb6c1;
+      padding: 2rem;
+      border-bottom: 3px solid #ff8fa3;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #d6336c;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+    }
+    .postit {
+      background: #fffacd;
+      display: inline-block;
+      padding: 2rem;
+      border: 1px solid #f0e68c;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #5c4033;
+      max-width: 500px;
+      min-height: 100px;
+      margin: 1rem auto;
+      opacity: 0;
+      transform: scale(0.8) rotate(-3deg);
+      animation: aparecer 0.8s forwards;
+    }
+    button {
+      background-color: #ff8fa3;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #ff6f90;
+    }
+    @keyframes aparecer {
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Frases para Você 💖</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="historia.html">História</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="planos.html">Planos</a>
+      <a href="musica.html">Músicas</a>
+    </nav>
+  </header>
+
+  <section>
+    <div id="frase" class="postit">Clique no botão para receber uma frase 💌</div>
+    <button onclick="sortearFrase()">Sortear Frase</button>
+  </section>
+
+  <script>
+    const frases = [
+      "Você é minha Deusa Grega 💫",
+      "Te amo muito, meu amor ❤️",
+      "Você faz meus dias melhores 🌞",
+      "Sua existência é o melhor presente 🎁",
+      "Estar com você é estar em casa 🏡",
+      "Você ilumina até meus dias escuros ✨",
+      "Você é meu lugar favorito no mundo 🌍"
+    ];
+
+    function sortearFrase() {
+      const fraseEl = document.getElementById('frase');
+      fraseEl.style.opacity = 0;
+      fraseEl.style.animation = 'none';
+      void fraseEl.offsetWidth; // reinicia a animação
+      const novaFrase = frases[Math.floor(Math.random() * frases.length)];
+      fraseEl.textContent = novaFrase;
+      fraseEl.style.animation = 'aparecer 0.8s forwards';
+    }
+  </script>
+</body>
+</html>
