@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Planos</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#ffe6f0, #ffffff);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #ffb6c1;
+      padding: 2rem;
+      border-bottom: 3px solid #ff8fa3;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #d6336c;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+    }
+    footer {
+      background-color: #ffd5dc;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    li {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    .completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Planos Futuros ✨</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="historia.html">História</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="musica.html">Músicas</a>
+    </nav>
+  </header>
+
+  <section>
+    <ul id="planList">
+      <li><label><input type="checkbox"> Ir numa balada</label></li>
+      <li><label><input type="checkbox"> Ir na Fantasiarq</label></li>
+      <li><label><input type="checkbox"> Noite de jogos</label></li>
+    </ul>
+
+       
+    <h2 style="margin-top: 3rem;">🌍 Países que já visitamos</h2>
+    <div id="map" style="width: 100%; max-width: 900px; height: 500px; margin: 2rem auto;"></div>
+
+  </section>
+
+  <footer>
+    <p>Feito com amor por Vitor</p>
+  </footer>
+
+  <script>
+    const planList = document.getElementById('planList');
+
+    planList.addEventListener('change', (event) => {
+      if (event.target.tagName === 'INPUT') {
+        const li = event.target.closest('li');
+        if (event.target.checked) {
+          li.classList.add('completed');
+          planList.appendChild(li); // move para o fim
+        } else {
+          li.classList.remove('completed');
+          planList.insertBefore(li, planList.firstChild); // move para o início
+        }
+      }
+    });
+
+ 
+  </script>
+  <script src="https://simplemaps.com/static/world/js/script.js"></script>
+  <script src="mapdata.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Música Incorporada com Iframely</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#fff0f5, #ffffff);
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #ffb6c1;
+      padding: 2rem;
+      border-bottom: 3px solid #ff8fa3;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #d6336c;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+    }
+    iframe {
+      margin-top: 2rem;
+      width: 90%;
+      max-width: 560px;
+      height: 315px;
+      border: none;
+      border-radius: 10px;
+    }
+    footer {
+      background-color: #ffd5dc;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Nossas Música 🎶</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="historia.html">História</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="planos.html">Planos</a>
+      <a href="frases.html">Frases</a>
+    </nav>
+  </header>
+
+  <section>
+   <p>Músicas que me lembram você, basta dar o play e cantar junto 💖</p>
+    <button onclick="toggleMute()">🔇 Mute / Unmute fundo</button>
+
+    <audio id="bg-music" autoplay loop>
+      <source src="audio_site.wav" type="audio/wav">
+      Seu navegador não suporta áudio.
+    </audio>
+    
+    <h2>Silver Tongues – Louis Tomlinson</h2>
+    <div class="iframe-wrapper">
+      <iframe src="https://cdn.iframe.ly/api/iframe?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DxxTxeA1JQB0&key=925108d922be940af814f71907a7df4b"
+        allowfullscreen
+        scrolling="no"
+        allow="accelerometer *; clipboard-write *; encrypted-media *; gyroscope *; picture-in-picture *; web-share *;">
+      </iframe>
+    </div>
+
+    <h2>Somebody Like You – Giant Rooks</h2>
+    <div class="iframe-wrapper">
+      <iframe src="https://cdn.iframe.ly/api/iframe?url=https%3A%2F%2Fyoutu.be%2FH9rnwirL3Eo%3Fsi%3DwaL1MN0VbMJnmJcE&key=925108d922be940af814f71907a7df4b"
+        allowfullscreen
+        scrolling="no"
+        allow="accelerometer *; clipboard-write *; encrypted-media *; gyroscope *; picture-in-picture *; web-share *;">
+      </iframe>
+    </div>
+
+    <h2>Little Things – One Direction</h2>
+    <div class="iframe-wrapper">
+      <iframe src=    "https://cdn.iframe.ly/api/iframe?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D6wBzR7zhA0g&key=925108d922be940af814f71907a7df4b"
+        allowfullscreen
+        scrolling="no"
+        allow="accelerometer *; clipboard-write *; encrypted-media *; gyroscope *; picture-in-picture *; web-share *;">
+      </iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>Feito com carinho 💕</p>
+  </footer>
+
+  <script>
+    const audio = document.getElementById('bg-music');
+    function toggleMute() {
+      audio.muted = !audio.muted;
+    }
+  </script>
+
+</body>
+</html>
