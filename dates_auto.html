@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ideias de Dates 💕</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#ffe6f0, #ffffff);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #ffb6c1;
+      padding: 2rem;
+      border-bottom: 3px solid #ff8fa3;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #d6336c;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 2rem;
+    }
+
+    .date-box {
+      background: white;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .date-idea {
+      font-size: 1.8rem;
+      margin: 2rem 0;
+      color: #d6336c;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    button {
+      background-color: #ff8fa3;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #ff6f91;
+      transform: scale(1.03);
+    }
+
+    .ideas-list {
+      max-width: 900px;
+      margin: 3rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+
+    .idea-card {
+      background: rgba(255,255,255,0.8);
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      font-weight: 500;
+    }
+
+    input {
+      width: 80%;
+      max-width: 500px;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 2px solid #ffb6c1;
+      font-size: 1rem;
+    }
+
+    footer {
+      background-color: #ffd5dc;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Ideias de Dates 💕</h1>
+    <p>Quando bater a dúvida do que fazer juntos ✨</p>
+
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="historia.html">Nossa História</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="planos.html">Planos</a>
+      <a href="musica.html">Músicas</a>
+      <a href="frases.html">Frases 💌</a>
+      <a href="dates.html">Dates 💕</a>
+    </nav>
+  </header>
+
+  <section>
+
+    <div class="date-box">
+
+      <h2>🎲 Sorteador de Date</h2>
+
+      <p>Clique no botão e deixe o destino decidir 💖</p>
+
+      <div class="date-idea" id="dateIdea">
+        Clique para sortear algo legal ✨
+      </div>
+
+      <button onclick="sortearDate()">
+        Sortear Date
+      </button>
+
+    </div>
+
+    <div class="date-box">
+
+      <h2>➕ Adicionar ideia</h2>
+
+      <p>Adicione novas ideias para os próximos dates 💕</p>
+
+      <input
+        id="novaIdeia"
+        type="text"
+        placeholder="Digite uma ideia de date..."
+      >
+
+      <br><br>
+
+      <button onclick="adicionarDate()">
+        Adicionar
+      </button>
+
+    </div>
+
+    <h2>💡 Todas as ideias</h2>
+
+    <div class="ideas-list" id="ideasList"></div>
+
+  </section>
+
+  <footer>
+    <p>Feito com amor por Vitor para Anna 💖</p>
+  </footer>
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+    import {
+      getDatabase,
+      ref,
+      push,
+      onValue
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCCDWDsntGSFqZ09cOB2tt9Syx1lqOGnrs",
+      authDomain: "site-vitor-anna.firebaseapp.com",
+      projectId: "site-vitor-anna",
+      storageBucket: "site-vitor-anna.firebasestorage.app",
+      messagingSenderId: "459758330891",
+      appId: "1:459758330891:web:0b59bf3297367af31e130e",
+      measurementId: "G-KVXKP74B7W"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    const db = getDatabase(app);
+
+    const datesRef = ref(db, "dates");
+
+    let atividades = [];
+
+    function mostrarAtividades() {
+
+      const lista = document.getElementById("ideasList");
+
+      lista.innerHTML = "";
+
+      atividades.forEach((atividade) => {
+
+        const card = document.createElement("div");
+
+        card.className = "idea-card";
+
+        card.innerText = atividade;
+
+        lista.appendChild(card);
+
+      });
+
+    }
+
+    onValue(datesRef, (snapshot) => {
+
+      atividades = [];
+
+      snapshot.forEach((childSnapshot) => {
+
+        atividades.push(childSnapshot.val().texto);
+
+      });
+
+      mostrarAtividades();
+
+    });
+
+    window.sortearDate = function () {
+
+      if (atividades.length === 0) {
+
+        document.getElementById("dateIdea").innerText =
+          "Ainda não existem ideias 😢";
+
+        return;
+
+      }
+
+      const sorteio =
+        atividades[Math.floor(Math.random() * atividades.length)];
+
+      document.getElementById("dateIdea").innerText = sorteio;
+
+    };
+
+    window.adicionarDate = function () {
+
+      const input = document.getElementById("novaIdeia");
+
+      const texto = input.value.trim();
+
+      if (texto === "") return;
+
+      push(datesRef, {
+        texto: texto
+      });
+
+      input.value = "";
+
+    };
+
+  </script>
+
+</body>
+
+</html>
