@@ -114,6 +114,7 @@
       <a href="planos.html">Planos</a>
       <a href="musica.html">Músicas</a>
       <a href="frases.html">Frases 💌</a>
+      <a href="dates.html">Dates 💕</a>
     </nav>
   </header>
 
@@ -132,34 +133,10 @@
       </button>
     </div>
 
-    <h2>💡 Algumas ideias possíveis</h2>
+    <h2>💡 Todas as ideias</h2>
+    <p>Para adicionar uma ideia nova, basta colocar na lista <strong>atividades</strong> no JavaScript.</p>
 
-    <div class="ideas-list">
-      <div class="idea-card">🍝 Cozinhar juntos em chamada</div>
-      <div class="idea-card">🎮 Jogar Overcooked</div>
-      <div class="idea-card">🎬 Assistir um filme juntos</div>
-      <div class="idea-card">📺 Começar uma série nova</div>
-      <div class="idea-card">📱 Jogos idiotas do Instagram</div>
-      <div class="idea-card">🧠 Conversa aleatória profunda</div>
-      <div class="idea-card">😂 Fazer apresentação de slides zoada</div>
-      <div class="idea-card">🍔 Pedir comida juntos</div>
-      <div class="idea-card">💻 Construir um site juntos</div>
-      <div class="idea-card">🎤 Apresentar algo que gosta</div>
-      <div class="idea-card">🎨 Jogar Gartic</div>
-      <div class="idea-card">📚 Ler juntos</div>
-      <div class="idea-card">🎧 Escutar música juntos</div>
-      <div class="idea-card">🌎 Fazer tour virtual no Google Maps</div>
-      <div class="idea-card">🎲 Inventar um hobby aleatório</div>
-      <div class="idea-card">❓ Quiz um sobre o outro</div>
-      <div class="idea-card">🕹️ Jogar jogo coop aleatório</div>
-      <div class="idea-card">📸 Recriar fotos antigas</div>
-      <div class="idea-card">✈️ Planejar uma viagem imaginária</div>
-      <div class="idea-card">💌 Ler mensagens antigas</div>
-      <div class="idea-card">🔥 Brincadeiras gostosas</div>
-      <div class="idea-card">🎭 Tentar imitar sotaques</div>
-      <div class="idea-card">🧃 Fazer drink/suco estranho juntos</div>
-      <div class="idea-card">📖 Criar histórias juntos</div>
-    </div>
+    <div class="ideas-list" id="ideasList"></div>
 
   </section>
 
@@ -168,8 +145,12 @@
   </footer>
 
   <script>
+    // Coloque todas as atividades aqui.
+    // Tudo que você adicionar nesta lista aparece automaticamente:
+    // 1) no sorteador
+    // 2) na lista de atividades da página
 
-    const ideias = [
+    const atividades = [
       "🎮 Jogar Overcooked",
       "🍝 Cozinhar juntos em chamada",
       "🎬 Assistir um filme juntos",
@@ -185,28 +166,53 @@
       "📚 Ler juntos",
       "🎲 Tentar um hobby aleatório",
       "🎧 Escutar música juntos",
+      "🌎 Fazer tour virtual no Google Maps",
+      "❓ Fazer quiz um sobre o outro",
+      "🕹️ Jogar um jogo coop aleatório",
+      "📸 Recriar fotos antigas",
       "✈️ Planejar uma viagem imaginária",
-      "🌎 Explorar lugares no Google Maps",
-      "📸 Ver fotos antigas juntos",
-      "🕹️ Baixar um jogo coop aleatório",
-      "❓ Fazer perguntas profundas",
-      "🎭 Imitar sotaques",
-      "🎵 Montar playlist juntos",
-      "📖 Inventar uma história juntos",
-      "📷 Tentar recriar fotos engraçadas",
-      "🧃 Fazer bebida estranha juntos",
+      "💌 Ler mensagens antigas",
+      "🎭 Tentar imitar sotaques",
+      "🧃 Fazer drink ou suco estranho juntos",
+      "📖 Criar histórias juntos",
+      "🎵 Montar uma playlist juntos",
       "📝 Escrever cartas um para o outro",
-      "🎲 Deixar o ChatGPT inventar um date",
-      "🎬 Assistir vídeos antigos do YouTube",
+      "🤖 Deixar o ChatGPT inventar um date",
+      "📺 Assistir vídeos antigos do YouTube",
       "🎮 Jogar Roblox ou Minecraft juntos",
-      "💞 Relembrar momentos favoritos do relacionamento"
+      "💞 Relembrar momentos favoritos do relacionamento",
+      "🖼️ Fazer PowerPoint Night com tema absurdo",
+      "🏛️ Fazer tour em museus virtuais",
+      "🌍 Jogar GeoGuessr",
+      "😬 Assistir vídeos cringe juntos",
+      "🗺️ Escolher um país aleatório e planejar uma viagem falsa",
+      "🏆 Montar tier list de coisas aleatórias",
+      "🛒 Ler reviews engraçadas da Amazon",
+      "🎨 Desenhar um ao outro no Paint",
+      "✅ Fazer bingo de coisas do relacionamento",
+      "💬 Fazer perguntas tipo 36 questions to fall in love",
+      "🍕 Fazer date temático, tipo Itália, Grécia ou Japão",
+      "🧊 Assistir iceberg de assuntos aleatórios",
+      "🧑‍🏫 Cada um ensinar uma habilidade ao outro"
     ];
 
     function sortearDate() {
-      const sorteio = ideias[Math.floor(Math.random() * ideias.length)];
-      document.getElementById('dateIdea').innerText = sorteio;
+      const sorteio = atividades[Math.floor(Math.random() * atividades.length)];
+      document.getElementById("dateIdea").innerText = sorteio;
     }
 
+    function mostrarAtividades() {
+      const lista = document.getElementById("ideasList");
+
+      atividades.forEach(function(atividade) {
+        const card = document.createElement("div");
+        card.className = "idea-card";
+        card.innerText = atividade;
+        lista.appendChild(card);
+      });
+    }
+
+    mostrarAtividades();
   </script>
 
 </body>
