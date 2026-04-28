@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
-  <title>Nossa Playlist 🎶</title>
+  <title>Músicas 🎶</title>
 
   <style>
 
@@ -14,22 +13,12 @@
       text-align: center;
       margin: 0;
       padding: 0;
-      min-height: 100vh;
     }
 
     header {
       background-color: #ffb6c1;
       padding: 2rem;
       border-bottom: 3px solid #ff8fa3;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    nav {
-      margin-top: 1rem;
     }
 
     nav a {
@@ -40,53 +29,38 @@
     }
 
     section {
-      padding: 3rem 1rem;
-    }
-
-    .playlist-box {
-
-      background: white;
-
-      max-width: 900px;
-
-      margin: auto;
-
       padding: 2rem;
-
-      border-radius: 24px;
-
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-
-    }
-
-    .playlist-box h2 {
-      margin-bottom: 1rem;
-      color: #d6336c;
-      font-size: 2rem;
-    }
-
-    .playlist-box p {
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
     }
 
     iframe {
-
-      border-radius: 16px;
-
-      width: 100%;
-
-      height: 700px;
-
+      margin-top: 2rem;
+      width: 90%;
+      max-width: 560px;
+      height: 352px;
       border: none;
-
+      border-radius: 12px;
     }
 
     footer {
       background-color: #ffd5dc;
       padding: 1rem;
       font-size: 0.9rem;
-      margin-top: 3rem;
+      margin-top: 2rem;
+    }
+
+    button {
+      background-color: #ff8fa3;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #ff6f91;
     }
 
   </style>
@@ -97,7 +71,7 @@
 
   <header>
 
-    <h1>Nossas Músicas 🎶</h1>
+    <h1>Nossas Música 🎶</h1>
 
     <nav>
       <a href="index.html">Início</a>
@@ -113,13 +87,22 @@
 
   <section>
 
-    <div class="playlist-box">
+    <p>
+      Músicas que me lembram você, basta dar o play e cantar junto 💖
+    </p>
 
-      <h2>🎧 Nossa Playlist 💖</h2>
+    <button onclick="toggleMute()">
+      🔇 Mute / Unmute fundo
+    </button>
 
-      <p>
-        Músicas que me lembram você, para ouvir juntos mesmo de longe ✨
-      </p>
+    <audio id="bg-music" autoplay loop>
+      <source src="audio_site.wav" type="audio/wav">
+      Seu navegador não suporta áudio.
+    </audio>
+
+    <h2>🎧 Nossa Playlist 💖</h2>
+
+    <div class="iframe-wrapper">
 
       <iframe
         src="https://open.spotify.com/embed/playlist/11IaZQ2S9u3jEqob9VbmvO?utm_source=generator"
@@ -136,6 +119,15 @@
     <p>Feito com carinho 💕</p>
   </footer>
 
-</body>
+  <script>
 
+    const audio = document.getElementById('bg-music');
+
+    function toggleMute() {
+      audio.muted = !audio.muted;
+    }
+
+  </script>
+
+</body>
 </html>
