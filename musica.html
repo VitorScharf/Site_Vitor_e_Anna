@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
-  <title>Nossas Músicas 🎶</title>
+  <title>Nossa Playlist 🎶</title>
 
   <style>
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(#fff0f5, #ffffff);
@@ -12,12 +14,22 @@
       text-align: center;
       margin: 0;
       padding: 0;
+      min-height: 100vh;
     }
 
     header {
       background-color: #ffb6c1;
       padding: 2rem;
       border-bottom: 3px solid #ff8fa3;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav {
+      margin-top: 1rem;
     }
 
     nav a {
@@ -28,44 +40,57 @@
     }
 
     section {
+      padding: 3rem 1rem;
+    }
+
+    .playlist-box {
+
+      background: white;
+
+      max-width: 900px;
+
+      margin: auto;
+
       padding: 2rem;
+
+      border-radius: 24px;
+
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+
+    }
+
+    .playlist-box h2 {
+      margin-bottom: 1rem;
+      color: #d6336c;
+      font-size: 2rem;
+    }
+
+    .playlist-box p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
     }
 
     iframe {
-      margin-top: 1rem;
-      width: 90%;
-      max-width: 560px;
+
+      border-radius: 16px;
+
+      width: 100%;
+
+      height: 700px;
+
       border: none;
-      border-radius: 12px;
+
     }
 
     footer {
       background-color: #ffd5dc;
       padding: 1rem;
       font-size: 0.9rem;
-      margin-top: 2rem;
-    }
-
-    .music-card {
-      margin-bottom: 3rem;
-    }
-
-    button {
-      background-color: #ff8fa3;
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-
-    button:hover {
-      background-color: #ff6f91;
+      margin-top: 3rem;
     }
 
   </style>
+
 </head>
 
 <body>
@@ -88,84 +113,16 @@
 
   <section>
 
-    <p>
-      Músicas que me lembram você, basta dar o play e cantar junto 💖
-    </p>
-
-    <button onclick="toggleMute()">
-      🔇 Mute / Unmute fundo
-    </button>
-
-    <audio id="bg-music" autoplay loop>
-      <source src="audio_site.wav" type="audio/wav">
-      Seu navegador não suporta áudio.
-    </audio>
-
-    <!-- PLAYLIST -->
-
-    <div class="music-card">
+    <div class="playlist-box">
 
       <h2>🎧 Nossa Playlist 💖</h2>
 
+      <p>
+        Músicas que me lembram você, para ouvir juntos mesmo de longe ✨
+      </p>
+
       <iframe
-        style="border-radius:12px"
         src="https://open.spotify.com/embed/playlist/11IaZQ2S9u3jEqob9VbmvO?utm_source=generator"
-        width="100%"
-        height="352"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-      </iframe>
-
-    </div>
-
-    <!-- SILVER TONGUES -->
-
-    <div class="music-card">
-
-      <h2>Silver Tongues – Louis Tomlinson</h2>
-
-      <iframe
-        style="border-radius:12px"
-        src="https://open.spotify.com/embed/track/0dQ2isoY2Yja7v5mQTKQOu?utm_source=generator"
-        width="100%"
-        height="152"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-      </iframe>
-
-    </div>
-
-    <!-- SOMEBODY LIKE YOU -->
-
-    <div class="music-card">
-
-      <h2>Somebody Like You – Giant Rooks</h2>
-
-      <iframe
-        style="border-radius:12px"
-        src="https://open.spotify.com/embed/track/6I5s2uG4Ruxr5ZkHnM7K2S?utm_source=generator"
-        width="100%"
-        height="152"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-      </iframe>
-
-    </div>
-
-    <!-- LITTLE THINGS -->
-
-    <div class="music-card">
-
-      <h2>Little Things – One Direction</h2>
-
-      <iframe
-        style="border-radius:12px"
-        src="https://open.spotify.com/embed/track/2nMOodYNHBAQ0T7sK0mS1p?utm_source=generator"
-        width="100%"
-        height="152"
         allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy">
@@ -179,15 +136,6 @@
     <p>Feito com carinho 💕</p>
   </footer>
 
-  <script>
-
-    const audio = document.getElementById('bg-music');
-
-    function toggleMute() {
-      audio.muted = !audio.muted;
-    }
-
-  </script>
-
 </body>
+
 </html>
